@@ -4,7 +4,7 @@ function Home() {
   return (
     <div className="hero">
       <div className="hero-image">
-        <img src="avatar.jpg" alt="Nguyễn Văn Phong" />
+        <img src="/avatar.jpg" alt="Nguyễn Văn Phong" />
       </div>
       <div className="hero-content">
         <h1>

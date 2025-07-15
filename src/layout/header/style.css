@@ -1,83 +1,85 @@
+/* Reset */
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
-
 body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
 }
 
-.header {
-    overflow: hidden;
-    background-color: #f1f1f1;
-    padding: 20px 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.header-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  padding: 0 32px;
+  min-height: 64px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-.header .logo {
-    color: black;
-    text-align: center;
-    padding: 12px;
-    text-decoration: none;
-    font-size: 25px;
-    line-height: 25px;
-    font-weight: bold;
-    border-radius: 4px;
-    user-select: none;
+.logo {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1890ff;
+  margin-right: 32px;
+  letter-spacing: 1px;
+  user-select: none;
+  white-space: nowrap;
 }
 
-.header .logo:hover {
-    background-color: #ddd;
-    color: black;
+.main-menu {
+  flex: 1;
+  display: flex !important;
+  justify-content: center !important;
+  background: transparent !important;
+  border-bottom: none !important;
+  font-size: 1.15rem;         /* Tăng cỡ chữ */
+  font-weight: 500;           /* Đậm hơn */
+  letter-spacing: 0.5px;      /* Dễ đọc hơn */
 }
 
-.header .logo.active {
-    background-color: dodgerblue;
-    color: white;
+.ant-menu-horizontal > .ant-menu-item, 
+.ant-menu-horizontal > .ant-menu-submenu {
+  padding: 0 24px;            /* Tăng khoảng cách giữa các mục */
+  height: 64px;
+  display: flex;
+  align-items: center;
+  border: none !important;
+  transition: background 0.2s, color 0.2s;
 }
 
-.nav {
-    display: flex;
-    align-items: center;
+.ant-menu-item-selected {
+  background: #e6f7ff !important;
+  color: #1890ff !important;
+  border-radius: 6px 6px 0 0;
+  font-weight: 600;
 }
 
-.nav a {
-    color: black;
-    text-decoration: none;
-    padding: 12px 20px;
-    font-size: 18px;
-    line-height: 25px;
-    border-radius: 4px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+.ant-menu-item:hover, .ant-menu-submenu-title:hover {
+  color: #40a9ff !important;
+  background: #f0faff !important;
+  border-radius: 6px 6px 0 0;
 }
-
-.nav a:hover {
-    background-color: #ddd;
-    color: black;
-}
-
-.nav a.active {
-    background-color: dodgerblue;
-    color: white;
-}
-
-@media screen and (max-width: 500px) {
-
-    .header .logo {
-        text-align: left;
-    }
-
-    .nav {
-        flex-direction: column;
-        align-items: flex-start;
-        width: 100%;
-    }
-
-    .nav a {
-        padding: 10px;
-        width: 100%;
-        text-align: center;
-    }
+@media (max-width: 800px) {
+  .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 8px;
+    min-height: 56px;
+  }
+  .logo {
+    margin: 12px 0 0 8px;
+    font-size: 1.3rem;
+  }
+  .menu-wrapper {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .ant-menu-horizontal > .ant-menu-item, .ant-menu-horizontal > .ant-menu-submenu {
+    padding: 0 12px;
+    height: 48px;
+  }
 }
