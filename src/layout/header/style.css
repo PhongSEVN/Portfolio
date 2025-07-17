@@ -1,85 +1,147 @@
 /* Reset */
 * {
-  box-sizing: border-box;
-}
-body {
-  margin: 0;
-  font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+  }
+  
+  .header-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    padding: 0 32px;
+    min-height: 64px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #1890ff;
+    margin-right: 32px;
+    letter-spacing: 1px;
+    user-select: none;
+    white-space: nowrap;
+  }
+  
+  .main-menu {
+    flex: 1;
+    display: flex !important;
+    justify-content: center !important;
+    background: transparent !important;
+    border-bottom: none !important;
+    font-size: 1.15rem;         /* Tăng cỡ chữ */
+    font-weight: 500;           /* Đậm hơn */
+    letter-spacing: 0.5px;      /* Dễ đọc hơn */
+  }
+  
+  .ant-menu-horizontal > .ant-menu-item, 
+  .ant-menu-horizontal > .ant-menu-submenu {
+    padding: 0 24px;            /* Tăng khoảng cách giữa các mục */
+    height: 64px;
+    display: flex;
+    align-items: center;
+    border: none !important;
+    transition: background 0.2s, color 0.2s;
+  }
+  
+  .ant-menu-item-selected {
+    background: #e6f7ff !important;
+    color: #1890ff !important;
+    border-radius: 6px 6px 0 0;
+    font-weight: 600;
+  }
+  
+  .ant-menu-item:hover, .ant-menu-submenu-title:hover {
+    color: #40a9ff !important;
+    background: #f0faff !important;
+    border-radius: 6px 6px 0 0;
+  }
+  @media (max-width: 800px) {
+    .header-container {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 0 8px;
+      min-height: 56px;
+    }
+    .logo {
+      margin: 12px 0 0 8px;
+      font-size: 1.3rem;
+    }
+    .menu-wrapper {
+      width: 100%;
+      justify-content: flex-start;
+    }
+    .ant-menu-horizontal > .ant-menu-item, .ant-menu-horizontal > .ant-menu-submenu {
+      padding: 0 12px;
+      height: 48px;
+    }
+  }
+  /* Mobile Menu Button - ẩn trên desktop */
+.mobile-menu-button {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 8px;
+    color: #333;
 }
 
-.header-container {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  background: #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  padding: 0 32px;
-  min-height: 64px;
-  position: sticky;
-  top: 0;
-  z-index: 100;
+.mobile-menu-button:hover {
+    color: #1890ff;
 }
 
-.logo {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #1890ff;
-  margin-right: 32px;
-  letter-spacing: 1px;
-  user-select: none;
-  white-space: nowrap;
+/* Mobile Menu Overlay */
+.mobile-menu-overlay {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border-top: 1px solid #f0f0f0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    z-index: 1000;
 }
 
-.main-menu {
-  flex: 1;
-  display: flex !important;
-  justify-content: center !important;
-  background: transparent !important;
-  border-bottom: none !important;
-  font-size: 1.15rem;         /* Tăng cỡ chữ */
-  font-weight: 500;           /* Đậm hơn */
-  letter-spacing: 0.5px;      /* Dễ đọc hơn */
+.mobile-menu .ant-menu-item {
+    padding: 12px 32px !important;
+    height: auto !important;
+    border-bottom: 1px solid #f5f5f5;
 }
 
-.ant-menu-horizontal > .ant-menu-item, 
-.ant-menu-horizontal > .ant-menu-submenu {
-  padding: 0 24px;            /* Tăng khoảng cách giữa các mục */
-  height: 64px;
-  display: flex;
-  align-items: center;
-  border: none !important;
-  transition: background 0.2s, color 0.2s;
+.mobile-menu .ant-menu-item:last-child {
+    border-bottom: none;
 }
 
-.ant-menu-item-selected {
-  background: #e6f7ff !important;
-  color: #1890ff !important;
-  border-radius: 6px 6px 0 0;
-  font-weight: 600;
-}
-
-.ant-menu-item:hover, .ant-menu-submenu-title:hover {
-  color: #40a9ff !important;
-  background: #f0faff !important;
-  border-radius: 6px 6px 0 0;
-}
 @media (max-width: 800px) {
   .header-container {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0 8px;
+    padding: 0 16px;
     min-height: 56px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
   }
+  
   .logo {
-    margin: 12px 0 0 8px;
+    margin: 0;
     font-size: 1.3rem;
+    flex: 0 0 auto; /* Không co giãn */
   }
-  .menu-wrapper {
-    width: 100%;
-    justify-content: flex-start;
+  
+  .desktop-menu {
+    display: none !important;
   }
-  .ant-menu-horizontal > .ant-menu-item, .ant-menu-horizontal > .ant-menu-submenu {
-    padding: 0 12px;
-    height: 48px;
+  
+  .mobile-menu-button {
+    display: block;
+    flex: 0 0 auto; /* Không co giãn */
   }
 }

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import './style.css'
 import {Menu} from "antd";
 import {useState} from "react";
-import { ContactsOutlined, HomeOutlined, ProjectOutlined } from '@ant-design/icons';
+import { ContactsOutlined, HomeOutlined, ProjectOutlined, MenuOutlined } from '@ant-design/icons';
 
 const items = [
     {
@@ -30,24 +30,57 @@ const items = [
         label: <Link to="/blog">Blog</Link>,
     },
 ];
+
 function Header() {
     const [current, setCurrent] = useState('mail');
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    
     const onClick = e => {
         console.log('click ', e);
         setCurrent(e.key);
+        setMobileMenuOpen(false); // Đóng menu khi click
     };
+
+    const toggleMobileMenu = () => {
+        setMobileMenuOpen(!mobileMenuOpen);
+    };
+
     return (
-        <header className="header-container">
-        <div className="logo">PhongDev</div>
-        <Menu
-          onClick={onClick}
-          selectedKeys={[current]}
-          mode="horizontal"
-          items={items}
-          className="main-menu"
-          style={{ flex: 1, justifyContent: 'center', border: 'none', background: 'transparent' }}
-        />
-      </header>
+        <div style={{ position: 'relative' }}>
+            <header className="header-container">
+                <div className="logo">PhongDev</div>
+                
+                <Menu
+                    onClick={onClick}
+                    selectedKeys={[current]}
+                    mode="horizontal"
+                    items={items}
+                    className="main-menu desktop-menu"
+                    style={{ flex: 1, justifyContent: 'center', border: 'none', background: 'transparent' }}
+                />
+                
+                <button 
+                    className="mobile-menu-button"
+                    onClick={toggleMobileMenu}
+                    aria-label="Toggle menu"
+                >
+                    <MenuOutlined />
+                </button>
+            </header>
+            
+            {mobileMenuOpen && (
+                <div className="mobile-menu-overlay">
+                    <Menu
+                        onClick={onClick}
+                        selectedKeys={[current]}
+                        mode="vertical"
+                        items={items}
+                        className="mobile-menu"
+                        style={{ border: 'none', background: 'white' }}
+                    />
+                </div>
+            )}
+        </div>
     );
 }
 
