@@ -2,6 +2,11 @@ import "./style.css";
 import Avatar from "../../assets/avatar.jpg";
 
 function Home() {
+
+    const viewProduct = () => {
+        window.location.href = "/projects";
+    }
+
   return (
     <div className="hero">
       <div className="hero-image">
@@ -15,7 +20,7 @@ function Home() {
         </h1>
         <p>Software Engineer</p>
         <div className="hero-buttons">
-          <button className="btn-primary">Explore my products</button>
+          <button className="btn-primary" onClick={viewProduct}>Explore my products</button>
           <button className="btn-secondary">My technologies</button>
         </div>
       </div>
