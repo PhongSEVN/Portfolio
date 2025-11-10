@@ -1,44 +1,60 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './style.css'
-import {Menu} from "antd";
-import {useState} from "react";
-import { ContactsOutlined, HomeOutlined, ProjectOutlined, MenuOutlined } from '@ant-design/icons';
+import { Menu } from "antd";
+import { useState, useEffect } from "react";
+import { ContactsOutlined, HomeOutlined, ProjectOutlined, MenuOutlined, CloseOutlined, ReadOutlined } from '@ant-design/icons';
 
 const items = [
     {
         label: <Link to="/">Home</Link>,
-        key: 'Home',
+        key: '/',
         icon: <HomeOutlined />,
     },
     {
         label: <Link to="/about">About</Link>,
-        key: 'About',
+        key: '/about',
         icon: <ContactsOutlined />,
     },
     {
-      label: <Link to="/projects">Projects</Link>,
-        key: 'Projects',
+        label: <Link to="/projects">Projects</Link>,
+        key: '/projects',
         icon: <ProjectOutlined />,
     },
     {
         label: <Link to="/contact">Contact</Link>,
-        key: 'Contact',
+        key: '/contact',
         icon: <ContactsOutlined />
     },
     {
-        key: 'alipay',
         label: <Link to="/blog">Blog</Link>,
+        key: '/blog',
+        icon: <ReadOutlined />,
     },
 ];
 
 function Header() {
-    const [current, setCurrent] = useState('mail');
+    const location = useLocation();
+    const [current, setCurrent] = useState(location.pathname);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-    
+
+    useEffect(() => {
+        setCurrent(location.pathname);
+    }, [location]);
+
+    useEffect(() => {
+        if (mobileMenuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [mobileMenuOpen]);
+
     const onClick = e => {
-        console.log('click ', e);
         setCurrent(e.key);
-        setMobileMenuOpen(false); // Đóng menu khi click
+        setMobileMenuOpen(false);
     };
 
     const toggleMobileMenu = () => {
@@ -46,41 +62,48 @@ function Header() {
     };
 
     return (
-        <div style={{ position: 'relative' }}>
-            <header className="header-container">
-                <div className="logo">PhongDev</div>
-                
-                <Menu
-                    onClick={onClick}
-                    selectedKeys={[current]}
-                    mode="horizontal"
-                    items={items}
-                    className="main-menu desktop-menu"
-                    style={{ flex: 1, justifyContent: 'center', border: 'none', background: 'transparent' }}
-                />
-                
-                <button 
-                    className="mobile-menu-button"
-                    onClick={toggleMobileMenu}
-                    aria-label="Toggle menu"
-                >
-                    <MenuOutlined />
-                </button>
-            </header>
-            
-            {mobileMenuOpen && (
-                <div className="mobile-menu-overlay">
-                    <Menu
-                        onClick={onClick}
-                        selectedKeys={[current]}
-                        mode="vertical"
-                        items={items}
-                        className="mobile-menu"
-                        style={{ border: 'none', background: 'white' }}
-                    />
+        <>
+            <header className="modern-header">
+                <div className="header-wrapper">
+                    <Link to="/" className="brand-logo" onClick={() => setCurrent('/')}>
+                        PhongDev
+                    </Link>
+
+                    <nav className="nav-desktop">
+                        <Menu
+                            onClick={onClick}
+                            selectedKeys={[current]}
+                            mode="horizontal"
+                            items={items}
+                            className="desktop-menu"
+                        />
+                    </nav>
+
+                    <button
+                        className="menu-btn"
+                        onClick={toggleMobileMenu}
+                        aria-label="Menu"
+                    >
+                        {mobileMenuOpen ? <CloseOutlined /> : <MenuOutlined />}
+                    </button>
                 </div>
+            </header>
+
+            {mobileMenuOpen && (
+                <>
+                    <div className="overlay" onClick={toggleMobileMenu} />
+                    <div className="nav-mobile">
+                        <Menu
+                            onClick={onClick}
+                            selectedKeys={[current]}
+                            mode="vertical"
+                            items={items}
+                            className="mobile-menu"
+                        />
+                    </div>
+                </>
             )}
-        </div>
+        </>
     );
 }
 

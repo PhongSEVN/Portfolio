@@ -4,6 +4,9 @@ import Home from './pages/home/index.js';
 import MainLayout from './layout/main';
 import Error404 from './pages/error/index.js';
 import {AboutPage} from "./pages/about";
+import ContactPage from "./pages/contact";
+import ProjectsPage from "./pages/projects";
+import BlogsPage from "./pages/blogs";
 
 function App() {
   return (
@@ -12,6 +15,9 @@ function App() {
       <Route element={<MainLayout />}>
         <Route path="/" element={<Home />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/projects" element={<ProjectsPage />}/>
+          <Route path="/blog" element={<BlogsPage />}/>
       </Route>
 
       {/* Route này sẽ không có Header */}
