@@ -1,109 +1,89 @@
 import { Link, useLocation } from 'react-router-dom';
-import './style.css'
-import { Menu } from "antd";
 import { useState, useEffect } from "react";
-import { ContactsOutlined, HomeOutlined, ProjectOutlined, MenuOutlined, CloseOutlined, ReadOutlined } from '@ant-design/icons';
+import { Drawer } from "antd";
+import './style.css';
 
 const items = [
-    {
-        label: <Link to="/">Home</Link>,
-        key: '/',
-        icon: <HomeOutlined />,
-    },
-    {
-        label: <Link to="/about">About</Link>,
-        key: '/about',
-        icon: <ContactsOutlined />,
-    },
-    {
-        label: <Link to="/projects">Projects</Link>,
-        key: '/projects',
-        icon: <ProjectOutlined />,
-    },
-    {
-        label: <Link to="/contact">Contact</Link>,
-        key: '/contact',
-        icon: <ContactsOutlined />
-    },
-    {
-        label: <Link to="/blog">Blog</Link>,
-        key: '/blog',
-        icon: <ReadOutlined />,
-    },
+    { label: 'Home', path: '/' },
+    { label: 'About', path: '/about' },
+    { label: 'Projects', path: '/projects' },
+    { label: 'Contact', path: '/contact' },
+    { label: 'Blog', path: '/blog' },
 ];
 
 function Header() {
     const location = useLocation();
     const [current, setCurrent] = useState(location.pathname);
-    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [drawerVisible, setDrawerVisible] = useState(false);
 
     useEffect(() => {
         setCurrent(location.pathname);
+        setDrawerVisible(false);
     }, [location]);
 
-    useEffect(() => {
-        if (mobileMenuOpen) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'unset';
-        }
-        return () => {
-            document.body.style.overflow = 'unset';
-        };
-    }, [mobileMenuOpen]);
-
-    const onClick = e => {
-        setCurrent(e.key);
-        setMobileMenuOpen(false);
+    const showDrawer = () => {
+        setDrawerVisible(true);
     };
 
-    const toggleMobileMenu = () => {
-        setMobileMenuOpen(!mobileMenuOpen);
+    const onClose = () => {
+        setDrawerVisible(false);
     };
 
     return (
-        <>
-            <header className="modern-header">
-                <div className="header-wrapper">
-                    <Link to="/" className="brand-logo" onClick={() => setCurrent('/')}>
+        <header className="professional-header">
+            <div className="header-container">
+                {/* Logo Section */}
+                <div className="logo-area">
+                    <Link to="/" className="logo-text" onClick={() => setCurrent('/')}>
                         PhongDev
+                        <span className="logo-dot"></span>
                     </Link>
-
-                    <nav className="nav-desktop">
-                        <Menu
-                            onClick={onClick}
-                            selectedKeys={[current]}
-                            mode="horizontal"
-                            items={items}
-                            className="desktop-menu"
-                        />
-                    </nav>
-
-                    <button
-                        className="menu-btn"
-                        onClick={toggleMobileMenu}
-                        aria-label="Menu"
-                    >
-                        {mobileMenuOpen ? <CloseOutlined /> : <MenuOutlined />}
-                    </button>
                 </div>
-            </header>
 
-            {mobileMenuOpen && (
-                <>
-                    <div className="overlay" onClick={toggleMobileMenu} />
-                    <div className="nav-mobile">
-                        <Menu
-                            onClick={onClick}
-                            selectedKeys={[current]}
-                            mode="vertical"
-                            items={items}
-                            className="mobile-menu"
-                        />
-                    </div>
-                </>
-            )}
-        </>
+                {/* Desktop Navigation */}
+                <nav className="desktop-nav">
+                    {items.map((item) => (
+                        <Link
+                            key={item.path}
+                            to={item.path}
+                            className={`nav-link ${current === item.path ? 'active' : ''}`}
+                            onClick={() => setCurrent(item.path)}
+                        >
+                            {item.label}
+                        </Link>
+                    ))}
+                </nav>
+
+                {/* Mobile Toggle Button */}
+                <button className="mobile-toggle" onClick={showDrawer} aria-label="Open Menu">
+                    <div className="hamburger"></div>
+                </button>
+
+                {/* Mobile Drawer Menu */}
+                <Drawer
+                    placement="right"
+                    onClose={onClose}
+                    open={drawerVisible}
+                    className="mobile-drawer"
+                    width={280}
+                    closable={true}
+                >
+                    <nav className="drawer-menu">
+                        {items.map((item) => (
+                            <Link
+                                key={item.path}
+                                to={item.path}
+                                className="drawer-link"
+                                onClick={onClose}
+                            >
+                                {item.label}
+                                <span>0{items.indexOf(item) + 1}</span>
+                            </Link>
+                        ))}
+                    </nav>
+                </Drawer>
+            </div>
+        </header>
     );
 }
 
