@@ -8,7 +8,18 @@ import ContactPage from "./pages/contact";
 import ProjectsPage from "./pages/projects";
 import BlogsPage from "./pages/blogs";
 
+import { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 function App() {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 100,
+    });
+  }, []);
   return (
     <Routes>
       {/* MainLayout sẽ có Header cho tất cả các route con */}

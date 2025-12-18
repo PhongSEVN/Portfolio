@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { GithubOutlined, MailOutlined, PhoneOutlined, LinkedinOutlined, SendOutlined } from '@ant-design/icons';
 import { message } from 'antd';
+import emailjs from '@emailjs/browser';
 import './contact.css';
 
 function ContactPage() {
@@ -10,6 +11,7 @@ function ContactPage() {
         subject: '',
         message: ''
     });
+    const [loading, setLoading] = useState(false);
 
     const contactInfo = [
         {
@@ -57,16 +59,37 @@ function ContactPage() {
             return;
         }
 
-        // Simulate sending message
-        message.success('Message sent successfully! I will get back to you soon.');
+        setLoading(true);
 
-        // Reset form
-        setFormData({
-            name: '',
-            email: '',
-            subject: '',
-            message: ''
-        });
+        const templateParams = {
+            from_name: formData.name,
+            from_email: formData.email,
+            subject: formData.subject,
+            message: formData.message,
+        };
+
+        // Thay thế bằng ID thật của bạn từ EmailJS Dashboard
+        const SERVICE_ID = ''; 
+        const TEMPLATE_ID = '';
+        const PUBLIC_KEY = '';
+
+        emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
+            .then((response) => {
+                console.log('SUCCESS!', response.status, response.text);
+                message.success('Message sent successfully! I will get back to you soon.');
+                setFormData({
+                    name: '',
+                    email: '',
+                    subject: '',
+                    message: ''
+                });
+            }, (err) => {
+                console.log('FAILED...', err);
+                message.error('Failed to send message. Please try again later.');
+            })
+            .finally(() => {
+                setLoading(false);
+            });
     };
 
     return (
@@ -89,6 +112,8 @@ function ContactPage() {
                                     rel="noopener noreferrer"
                                     className="contact-card"
                                     style={{ '--card-color': item.color }}
+                                    data-aos="zoom-in"
+                                    data-aos-delay={index * 100}
                                 >
                                     <div className="card-icon">{item.icon}</div>
                                     <div className="card-content">
@@ -154,9 +179,9 @@ function ContactPage() {
                                 />
                             </div>
 
-                            <button type="submit" className="submit-btn">
-                                <SendOutlined />
-                                Send Message
+                            <button type="submit" className="submit-btn" disabled={loading}>
+                                <SendOutlined spin={loading} />
+                                {loading ? 'Sending...' : 'Send Message'}
                             </button>
                         </form>
                     </div>

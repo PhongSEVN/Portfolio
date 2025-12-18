@@ -78,8 +78,13 @@ function ProjectsPage() {
                 </div>
 
                 <div className="projects-grid">
-                    {filteredProjects.map(project => (
-                        <div key={project.id} className="project-card">
+                    {filteredProjects.map((project, index) => (
+                        <div 
+                            key={project.id} 
+                            className="project-card"
+                            data-aos="fade-up"
+                            data-aos-delay={index * 100}
+                        >
                             <div className="project-image">
                                 <img src={project.image} alt={project.name} />
                                 <div className="project-overlay">

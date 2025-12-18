@@ -1,0 +1,49 @@
+.custom-cursor-dot,
+.custom-cursor-follower {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 99999;
+  border-radius: 50%;
+  transform: translate3d(-100px, -100px, 0);
+  transition: opacity 0.3s ease;
+  mix-blend-mode: difference;
+}
+
+.custom-cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: white;
+  margin-top: -4px;
+  margin-left: -4px;
+}
+
+.custom-cursor-follower {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  margin-top: -20px;
+  margin-left: -20px;
+  transition: width 0.3s, height 0.3s, background-color 0.3s, transform 0.1s;
+}
+
+.custom-cursor-dot.hovered {
+  opacity: 0;
+}
+
+.custom-cursor-follower.hovered {
+  width: 60px;
+  height: 60px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: transparent;
+  margin-top: -30px;
+  margin-left: -30px;
+}
+
+@media (max-width: 1024px) {
+  .custom-cursor-dot,
+  .custom-cursor-follower {
+    display: none;
+  }
+}
