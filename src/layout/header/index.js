@@ -67,6 +67,7 @@ function Header() {
                     className="mobile-drawer"
                     width={280}
                     closable={true}
+                    zIndex={20000}
                 >
                     <nav className="drawer-menu">
                         {items.map((item) => (
@@ -77,7 +78,6 @@ function Header() {
                                 onClick={onClose}
                             >
                                 {item.label}
-                                <span>0{items.indexOf(item) + 1}</span>
                             </Link>
                         ))}
                     </nav>
