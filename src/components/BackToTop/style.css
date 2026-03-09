@@ -26,7 +26,7 @@
 }
 
 .back-to-top:hover {
-  background-color: #1e40af;
+  background-color: #1E40AF;
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(37, 99, 235, 0.4);
 }

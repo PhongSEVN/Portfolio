@@ -11,7 +11,7 @@ function MainLayout() {
 
     return (
         <>
-            <CustomCursor />
+            {/* <CustomCursor /> */}
             <Header />
             <main className="main-content">
                 <AnimatePresence mode='wait'>

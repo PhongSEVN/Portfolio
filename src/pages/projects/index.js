@@ -6,44 +6,20 @@ import './projects.css';
 const projectsData = [
     {
         id: 1,
-        name: "Bitcoin Price Prediction",
+        name: "Human Detect",
         description: "Machine learning model to predict Bitcoin prices using historical data and technical indicators. Built with Python, TensorFlow, and data analysis libraries.",
-        image: "https://images.unsplash.com/photo-1518546305927-5a555bb7020d?w=800&q=80",
-        github: "https://github.com/PhongSEVN/Bitcoin-Price-Prediction",
-        tags: ["Python", "Machine Learning", "TensorFlow", "Data Science"]
+        image: "https://visailabs.com/wp-content/uploads/elementor/thumbs/People-detection-with-bounding-box-rd8d5b1t1dvk9ppflqkmw819b7f5cihcaty06sf664.jpg",
+        github: "https://github.com/PhongSEVN/Human-Detect",
+        tags: ["Python", "YOLO"]
     },
     {
         id: 2,
         name: "X-ray Pneumonia Classification",
         description: "Deep learning model for detecting pneumonia from chest X-ray images using CNN. Helps medical professionals with diagnosis accuracy.",
-        image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80",
+        image: "https://www.e7health.com/files/blogs/chest-x-ray-29.jpg",
         github: "https://github.com/PhongSEVN/Xray-Pneumonia-Classification",
-        tags: ["Python", "Deep Learning", "CNN", "Medical AI"]
+        tags: ["Python", "Deep Learning", "CNN"]
     },
-    {
-        id: 3,
-        name: "Student Management System",
-        description: "Comprehensive system for managing student records, grades, and academic information. Features include student profiles, course management, and reporting.",
-        image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80",
-        github: "https://github.com/PhongSEVN/Student-Management",
-        tags: ["Java", "Database", "Management System"]
-    },
-    {
-        id: 4,
-        name: "Computer Graphics Project",
-        description: "Interactive 3D graphics application demonstrating various computer graphics techniques including rendering, lighting, and transformations.",
-        image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&q=80",
-        github: "https://github.com/PhongSEVN/Project-Computer-Graphics",
-        tags: ["OpenGL", "C++", "3D Graphics", "Rendering"]
-    },
-    {
-        id: 5,
-        name: "TLU Schedule",
-        description: "Schedule management application for Thuy Loi University students. View timetables, set reminders, and manage academic calendar efficiently.",
-        image: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&q=80",
-        github: "https://github.com/PhongSEVN/TLU-Schedule",
-        tags: ["Web App", "Schedule", "Student Tool"]
-    }
 ];
 
 function ProjectsPage() {

@@ -2,7 +2,7 @@
 .contact-page {
     min-height: 100vh;
     padding: 80px 20px 60px;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
 }
 
 .contact-container {
@@ -21,7 +21,7 @@
     font-weight: 800;
     color: #1a1a1a;
     margin-bottom: 16px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #2563EB 0%, #1E40AF 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -154,9 +154,9 @@
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #667eea;
+    border-color: #2563EB;
     background: white;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
 .form-group textarea {
@@ -170,7 +170,7 @@
     justify-content: center;
     gap: 8px;
     padding: 14px 32px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%);
     color: white;
     border: none;
     border-radius: 8px;
@@ -183,7 +183,7 @@
 
 .submit-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 8px 16px rgba(37, 99, 235, 0.3);
 }
 
 .submit-btn:active {

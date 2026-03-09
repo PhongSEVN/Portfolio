@@ -18,7 +18,7 @@ function Home() {
           <br />
           Nguyễn Văn Phong
         </h1>
-        <p>Software Engineer</p>
+        <p>AI Engineer for Computer Vision</p>
         <div className="hero-buttons">
           <button className="btn-primary" onClick={viewProduct}>Explore my products</button>
           <button className="btn-secondary">My technologies</button>
