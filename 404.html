@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>PhongDev - Portfolio</title>
+  <script type="text/javascript">
+    // GitHub Pages SPA redirect hack
+    // Khi GitHub Pages trả về 404, file này sẽ redirect về index.html
+    // và giữ nguyên path gốc thông qua query parameter
+    var pathSegmentsToKeep = 1; // /Portfolio là 1 segment
+    var l = window.location;
+    l.replace(
+      l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+      l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+      l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+      (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+      l.hash
+    );
+  </script>
+</head>
+<body>
+</body>
+</html>
