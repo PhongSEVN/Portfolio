@@ -1,9 +1,9 @@
 import './App.css';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import Home from './pages/home/index.js';
 import MainLayout from './layout/main';
 import Error404 from './pages/error/index.js';
-import {AboutPage} from "./pages/about";
+import { AboutPage } from "./pages/about";
 import ContactPage from "./pages/contact";
 import ProjectsPage from "./pages/projects";
 import BlogsPage from "./pages/blogs";
@@ -11,6 +11,15 @@ import BlogsPage from "./pages/blogs";
 import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+
+// Scroll về đầu trang mỗi khi chuyển route
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
 
 function App() {
   useEffect(() => {
@@ -21,20 +30,24 @@ function App() {
     });
   }, []);
   return (
-    <Routes>
-      {/* MainLayout sẽ có Header cho tất cả các route con */}
-      <Route element={<MainLayout />}>
-        <Route path="/" element={<Home />} />
+    <>
+      <ScrollToTop />
+      <Routes>
+        {/* MainLayout sẽ có Header cho tất cả các route con */}
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<Home />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
-          <Route path="/projects" element={<ProjectsPage />}/>
-          <Route path="/blog" element={<BlogsPage />}/>
-      </Route>
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/blog" element={<BlogsPage />} />
+        </Route>
 
-      {/* Route này sẽ không có Header */}
-      <Route path="/*" element={<Error404 />} />
-    </Routes>
+        {/* Route này sẽ không có Header */}
+        <Route path="/*" element={<Error404 />} />
+      </Routes>
+    </>
   );
 }
 
 export default App;
+

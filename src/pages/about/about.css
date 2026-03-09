@@ -101,132 +101,89 @@
     margin-bottom: 0;
 }
 
-/* Skills Section */
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-}
-
-.skill-item {
+/* Education Section */
+.education-card {
     display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.skill-header {
-    display: flex;
-    justify-content: space-between;
     align-items: center;
+    gap: 24px;
+    padding: 28px 32px;
+    background: #EFF6FF;
+    border-radius: 12px;
+    border-left: 4px solid #2563EB;
+    transition: all 0.3s ease;
 }
 
-.skill-name {
-    font-size: 15px;
-    font-weight: 600;
-    color: #333;
+.education-card:hover {
+    transform: translateX(8px);
+    box-shadow: 0 4px 16px rgba(37, 99, 235, 0.15);
 }
 
-.skill-percent {
-    font-size: 14px;
+.edu-icon {
+    font-size: 48px;
+    flex-shrink: 0;
+}
+
+.edu-content h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+}
+
+.edu-content .edu-major {
+    font-size: 16px;
     font-weight: 600;
     color: #2563EB;
+    margin-bottom: 4px;
 }
 
-.skill-bar {
-    height: 8px;
-    background: #f0f0f0;
-    border-radius: 4px;
-    overflow: hidden;
+.edu-content .edu-period {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 0;
 }
 
-.skill-progress {
-    height: 100%;
-    background: linear-gradient(90deg, #3B82F6, #1E40AF);
-    border-radius: 4px;
-    transition: width 1s ease;
-}
-
-/* Interests Section */
-.interests-grid {
+/* Tech Stack Grid */
+.tech-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
 }
 
-.interest-card {
-    padding: 24px;
+.tech-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 24px 16px;
     background: #EFF6FF;
     border-radius: 12px;
     transition: all 0.3s ease;
     border: 2px solid transparent;
 }
 
-.interest-card:hover {
+.tech-item:hover {
     background: white;
     border-color: #2563EB;
-    transform: translateY(-4px);
-    box-shadow: 0 8px 16px rgba(37, 99, 235, 0.15);
+    transform: translateY(-6px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.15);
 }
 
-.interest-icon {
-    width: 56px;
-    height: 56px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%);
-    color: white;
-    font-size: 24px;
-    border-radius: 12px;
-    margin-bottom: 16px;
-}
-
-.interest-card h3 {
-    font-size: 18px;
-    font-weight: 700;
-    color: #1a1a1a;
-    margin-bottom: 8px;
-}
-
-.interest-card p {
-    font-size: 14px;
-    color: #666;
-    line-height: 1.6;
-    margin: 0;
-}
-
-/* Fun Facts */
-.facts-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-}
-
-.fact-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 32px;
-    background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%);
-    border-radius: 12px;
+.tech-item img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
     transition: transform 0.3s ease;
 }
 
-.fact-item:hover {
-    transform: translateY(-8px);
+.tech-item:hover img {
+    transform: scale(1.15);
 }
 
-.fact-number {
-    font-size: 48px;
-    font-weight: 800;
-    color: white;
-    margin-bottom: 8px;
-}
-
-.fact-label {
+.tech-item span {
     font-size: 14px;
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.9);
+    color: #333;
     text-align: center;
 }
 
@@ -261,19 +218,20 @@
         font-size: 28px;
     }
 
-    .skills-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .interests-grid {
-        grid-template-columns: 1fr;
+    .tech-grid {
+        grid-template-columns: repeat(3, 1fr);
         gap: 16px;
     }
 
-    .facts-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
+    .education-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 24px;
+    }
+
+    .education-card {
+        border-left: none;
+        border-top: 4px solid #2563EB;
     }
 }
 
@@ -299,11 +257,17 @@
         font-size: 24px;
     }
 
-    .interest-card {
-        padding: 20px;
+    .tech-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
     }
 
-    .fact-number {
-        font-size: 40px;
+    .tech-item {
+        padding: 20px 12px;
+    }
+
+    .tech-item img {
+        width: 40px;
+        height: 40px;
     }
 }

@@ -1,39 +1,35 @@
-import { CodeOutlined, RocketOutlined, HeartOutlined, TrophyOutlined } from '@ant-design/icons';
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Avatar } from 'antd';
 import './about.css';
 import avatar from "../../assets/avatar.jpg";
 
 export function AboutPage() {
-    const skills = [
-        { name: 'Python', level: 90 },
-        { name: 'Machine Learning', level: 85 },
-        { name: 'React', level: 80 },
-        { name: 'Java', level: 75 },
-        { name: 'Deep Learning', level: 80 },
-        { name: 'Web Development', level: 85 }
-    ];
+    const location = useLocation();
 
-    const interests = [
-        {
-            icon: <CodeOutlined />,
-            title: 'Clean Code',
-            description: 'Passionate about writing maintainable and efficient code'
-        },
-        {
-            icon: <RocketOutlined />,
-            title: 'Innovation',
-            description: 'Always exploring new technologies and frameworks'
-        },
-        {
-            icon: <HeartOutlined />,
-            title: 'Problem Solving',
-            description: 'Love tackling complex challenges with creative solutions'
-        },
-        {
-            icon: <TrophyOutlined />,
-            title: 'Continuous Learning',
-            description: 'Committed to growth and mastering new skills'
+    useEffect(() => {
+        if (location.hash) {
+            const el = document.querySelector(location.hash);
+            if (el) {
+                setTimeout(() => {
+                    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 300);
+            }
         }
+    }, [location]);
+    const techStack = [
+        { name: 'Python', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
+        { name: 'PyTorch', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg' },
+        { name: 'Docker', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
+        { name: 'Java', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' },
+        { name: 'C', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg' },
+        { name: 'C++', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg' },
+        { name: 'React', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
+        { name: 'Spring', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg' },
+        { name: 'MySQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
+        { name: 'PostgreSQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
+        { name: 'LaTeX', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/latex/latex-original.svg' },
+        { name: 'Git', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
     ];
 
     return (
@@ -50,7 +46,7 @@ export function AboutPage() {
                         />
                     </div>
                     <h1>Hi, I'm Phong Nguyen</h1>
-                    <p className="subtitle">Software Developer & AI Enthusiast</p>
+                    <p className="subtitle">AI Engineer</p>
                 </div>
 
                 {/* About Content */}
@@ -58,69 +54,41 @@ export function AboutPage() {
                     <section className="about-section">
                         <h2>About Me</h2>
                         <p>
-                            I'm a passionate software developer with a strong focus on artificial intelligence
-                            and machine learning. Currently studying at Thuy Loi University, I love building
-                            innovative solutions that make a real impact.
+                            I'm an AI Engineer specializing in Computer Vision, graduating from
+                            Thuy Loi University in 2026. I build deep learning solutions for
+                            real-world applications — from object detection systems to medical
+                            image classification.
                         </p>
                         <p>
-                            My journey in tech started with curiosity about how things work, and has evolved
-                            into a dedication to creating intelligent systems that solve real-world problems.
-                            From predicting Bitcoin prices to classifying medical images, I enjoy working on
-                            projects that push the boundaries of what's possible.
+                            With a solid foundation in Python, PyTorch, and modern web technologies,
+                            I enjoy bridging the gap between AI research and practical deployment.
+                            Always looking for challenging problems where AI can make a difference.
                         </p>
                     </section>
 
-                    {/* Skills Section */}
-                    <section className="about-section skills-section">
-                        <h2>Skills & Technologies</h2>
-                        <div className="skills-grid">
-                            {skills.map((skill, index) => (
-                                <div key={index} className="skill-item">
-                                    <div className="skill-header">
-                                        <span className="skill-name">{skill.name}</span>
-                                        <span className="skill-percent">{skill.level}%</span>
-                                    </div>
-                                    <div className="skill-bar">
-                                        <div
-                                            className="skill-progress"
-                                            style={{ width: `${skill.level}%` }}
-                                        />
-                                    </div>
-                                </div>
-                            ))}
+                    {/* Education Section */}
+                    <section className="about-section education-section">
+                        <h2>Education</h2>
+                        <div className="education-card">
+                            <div className="edu-icon">🎓</div>
+                            <div className="edu-content">
+                                <h3>Thuy Loi University</h3>
+                                <p className="edu-major">Information Technology — GPA: 3.32</p>
+                                <p className="edu-period">2022 - 2026</p>
+                            </div>
                         </div>
                     </section>
 
-                    {/* Interests Section */}
-                    <section className="about-section interests-section">
-                        <h2>What Drives Me</h2>
-                        <div className="interests-grid">
-                            {interests.map((interest, index) => (
-                                <div key={index} className="interest-card">
-                                    <div className="interest-icon">{interest.icon}</div>
-                                    <h3>{interest.title}</h3>
-                                    <p>{interest.description}</p>
+                    {/* Tech Stack Section */}
+                    <section className="about-section" id="tech-stack">
+                        <h2>Tech Stack</h2>
+                        <div className="tech-grid">
+                            {techStack.map((tech, index) => (
+                                <div key={index} className="tech-item" data-aos="fade-up" data-aos-delay={index * 50}>
+                                    <img src={tech.icon} alt={tech.name} />
+                                    <span>{tech.name}</span>
                                 </div>
                             ))}
-                        </div>
-                    </section>
-
-                    {/* Fun Facts */}
-                    <section className="about-section fun-facts">
-                        <h2>Fun Facts</h2>
-                        <div className="facts-grid">
-                            <div className="fact-item">
-                                <span className="fact-number">5+</span>
-                                <span className="fact-label">Projects Completed</span>
-                            </div>
-                            <div className="fact-item">
-                                <span className="fact-number">∞</span>
-                                <span className="fact-label">Cups of Coffee</span>
-                            </div>
-                            <div className="fact-item">
-                                <span className="fact-number">24/7</span>
-                                <span className="fact-label">Learning Mode</span>
-                            </div>
                         </div>
                     </section>
                 </div>

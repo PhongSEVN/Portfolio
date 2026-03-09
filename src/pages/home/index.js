@@ -1,11 +1,17 @@
 import "./style.css";
 import Avatar from "../../assets/avatar.jpg";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
+  const navigate = useNavigate();
 
-    const viewProduct = () => {
-        window.location.href = "/projects";
-    }
+  const viewProduct = () => {
+    navigate("/projects");
+  }
+
+  const viewTech = () => {
+    navigate("/about#tech-stack");
+  }
 
   return (
     <div className="hero">
@@ -21,7 +27,7 @@ function Home() {
         <p>AI Engineer for Computer Vision</p>
         <div className="hero-buttons">
           <button className="btn-primary" onClick={viewProduct}>Explore my products</button>
-          <button className="btn-secondary">My technologies</button>
+          <button className="btn-secondary" onClick={viewTech}>My technologies</button>
         </div>
       </div>
     </div>
