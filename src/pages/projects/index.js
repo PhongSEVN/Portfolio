@@ -32,7 +32,7 @@ const projectsData = [
         id: 4,
         name: "Vietnamese scene text ocr",
         description: "Using transformer based on VietOCR",
-        image: "https://bj-oss-datatang-03.oss-cn-beijing.aliyuncs.com/filesInfoUpload/data/apps/damp/temp/ziptemp/APY200102002_demo1695808985220/APY200102002_demo/2.jpg?Expires=4102329599&OSSAccessKeyId=LTAI8NWs2pDolLNH&Signature=ZA%2B%2BlomO%2FASafZT8yZfr87dZbVw%3D",
+        image: "https://user-images.githubusercontent.com/32253603/120606555-836d5700-c479-11eb-9a37-09fa8cc129f3.png",
         github: "https://github.com/PhongSEVN/Vietnamese-scene-text-ocr",
         tags: ["OCR", "Transformer"]
     }
