@@ -7,7 +7,7 @@ const projectsData = [
     {
         id: 1,
         name: "Human Detect",
-        description: "Machine learning model to predict Bitcoin prices using historical data and technical indicators. Built with Python, TensorFlow, and data analysis libraries.",
+        description: "Using YOLOv8 to detect human",
         image: "https://visailabs.com/wp-content/uploads/elementor/thumbs/People-detection-with-bounding-box-rd8d5b1t1dvk9ppflqkmw819b7f5cihcaty06sf664.jpg",
         github: "https://github.com/PhongSEVN/Human-Detect",
         tags: ["Python", "YOLO"]
@@ -20,6 +20,22 @@ const projectsData = [
         github: "https://github.com/PhongSEVN/Xray-Pneumonia-Classification",
         tags: ["Python", "Deep Learning", "CNN"]
     },
+    {
+        id: 3,
+        name: "Vietnamese money detect",
+        description: "Compare 2 models: Yolo full pipeline and Yolo detect object+Mobilenet classification",
+        image: "https://kampatour.com/pic/blog/images/vietnam-money-6.jpg",
+        github: "https://github.com/PhongSEVN/Vietnamese-Money-Detect",
+        tags: ["YOLO", "Deep Learning"]
+    },
+    {
+        id: 4,
+        name: "Vietnamese scene text ocr",
+        description: "Using transformer based on VietOCR",
+        image: "https://bj-oss-datatang-03.oss-cn-beijing.aliyuncs.com/filesInfoUpload/data/apps/damp/temp/ziptemp/APY200102002_demo1695808985220/APY200102002_demo/2.jpg?Expires=4102329599&OSSAccessKeyId=LTAI8NWs2pDolLNH&Signature=ZA%2B%2BlomO%2FASafZT8yZfr87dZbVw%3D",
+        github: "https://github.com/PhongSEVN/Vietnamese-scene-text-ocr",
+        tags: ["OCR", "Transformer"]
+    }
 ];
 
 function ProjectsPage() {
